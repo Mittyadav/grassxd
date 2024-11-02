@@ -1,0 +1,2 @@
+colorama
+git+https://github.com/akasakaid/websockets_proxy.git
