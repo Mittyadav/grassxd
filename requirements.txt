@@ -1,2 +1,3 @@
 colorama
-git+https://github.com/akasakaid/websockets_proxy.git
+aiohttp
+fake-useragent
