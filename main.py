@@ -97,7 +97,8 @@ class Grass:
                         pong_data = {"id": "F3X", "origin_action": "PONG"}
                         await wss.send_json(pong_data)
                         self.log(f"{white}send {magenta}pong {white}to server !")
-                        await countdown(10)
+                        # you can edit the countdown in code below
+                        await countdown(120)
             except KeyboardInterrupt:
                 await self.ses.close()
                 exit()
