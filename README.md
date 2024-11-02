@@ -2,6 +2,8 @@
 
 A useful program to help you collect grass points
 
+README in Indonesia language in [here](README_ID.md)
+
 # Table of Contents
 
 - [GrassXD](#grassxd)
