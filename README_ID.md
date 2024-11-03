@@ -9,10 +9,12 @@ Program yang berguna untuk membantu anda mencari point grass
 - [Pendaftaran](#pendaftaran)
 - [Peringatan dan catatan](#peringatan-dan-catatan)
 - [Tentang Proxy](#tentang-proxy)
+- [Tentang config.json](#tentang-configjson)
 - [Cara Menggunakan](#cara-menggunakan)
 - [Kode Javascript untuk mendapatkan data](#kode-javascript-untuk-mendapatkan-data)
   - [Kode untuk mendapatkan userid](#kode-untuk-mendapatkan-userid)
   - [Kode untuk mendapatkan token](#kode-untuk-mendapatkan-token)
+- [Error yang mungkin terjadi](#error-yang-mungkin-terjadi)
 - [Forum Diskusi](#forum-diskusi)
 - [Dukung](#dukung)
 - [Terima kasih](#terima-kasih)
@@ -44,6 +46,13 @@ http://user:password@host:port
 socks5://user:password@host:port
 ```
 
+# Tentang config.json
+
+Berikut penjelasan isi dari file config.json 
+
+| key           | value                   | deskripsi                                                                                                                 |
+| ------------- | ----------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| interval_ping | integer / angka positif | jumlah delay setiap ping ke server, satuan : detik <br> dari extensi sendiri memiliki jumlah delay 2 menit atau 120 detik |
 
 # Cara Menggunakan
 
@@ -68,9 +77,19 @@ socks5://user:password@host:port
 
 6. Isi proxy kalian ke file proxies.txt sesuai contoh yang telah saya berikan [Tentang Proxy](#tentang-proxy). Jika kalian tidak mengisi file `proxies.txt` maka akan otomatis menggunakan ip publik kalian.
 
-7. Jalankan file `setup.py` terlebih dahulu, kalian akan diberi inputan untuk memasukklan email dan password dari akun grass kalian untuk mendapatkan autentikasi (id dan token). Jika kalian mengalami error / yang lain, silahkan ambil userid dan token akun kalian secara manual. Lihat [Kode Javascript untuk mendapatkan data](#kode-javascript-untuk-mendapatkan-data)
+7. Jalankan file `setup.py` terlebih dahulu, kalian akan diberi inputan untuk memasukklan email dan password dari akun grass kalian untuk mendapatkan autentikasi (id dan token).
+   
+   ```shell
+   python setup.py
+   ```
+
+   Jika kalian mengalami error / yang lain, silahkan ambil userid dan token akun kalian secara manual. Lihat [Kode Javascript untuk mendapatkan data](#kode-javascript-untuk-mendapatkan-data)
 
 8. Jalankan file `main.py` 
+   
+   ```shell
+   python main.py
+   ```
 
 # Kode Javascript untuk mendapatkan data
 
@@ -86,6 +105,8 @@ Berikut kode javascript untuk mendapatkan userid
 copy(JSON.parse(localStorage.getItem("userId")))
 ```
 
+Jika muncul peringatan "Warning: Don’t paste code into the DevTools Console that you don’t " saat mempaste kode javascript diatas ketik `allow pasting` kemudian enter terlebih dahulu
+
 Kode diatas sudah otomatis membuat userid tercopy ke clipboard jadi kalian tinggal mempastenya ke file `userid.txt`
 
 ## Kode untuk mendapatkan token
@@ -96,7 +117,23 @@ Berikut kode javascript untuk mendapatkan token
 copy(JSON.parse(localStorage.getItem("accessToken")))
 ```
 
+Jika muncul peringatan "Warning: Don’t paste code into the DevTools Console that you don’t " saat mempaste kode javascript diatas ketik `allow pasting` kemudian enter terlebih dahulu
+
 Kode diatas sudah otomatis membuat token tercopy ke clipboard jadi kalian tinggal mempastenya ke file `token.txt`
+
+# Error yang mungkin terjadi
+
+Berikut beberapa error yang mungkin terjadi dan solusi 
+
+---
+Pesan error : Cannot write to closing transport
+
+Kenapa bisa terjadi ? Pesan error itu tampil / keluar ketika program ingin mengirim data yang seharusnya dikirim tetapi koneksi ke server telah tertutup. Kemungkinan terutup oleh proxy yang anda pakai atau dari server telah menutup koneksi anda.
+
+Solusi ? Coba di kurangi interval ping di dalam file `config.json`. Secara default adalah 120 (detik), coba di kurangi menjadi 60 (detik) atau lebih kecil lagi. Jika masih terjadi kemungkinan proxy yang anda gunakan jelek.
+
+Apa yang terjadi jika tidak di hentikan atau tidak di perbaiki? Ini hanya spekulasi saya saja, yang terjadi mungkin point yang anda dapatkan sedikit.
+
 
 # Forum Diskusi
 

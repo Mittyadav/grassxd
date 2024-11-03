@@ -32,7 +32,7 @@ class Grass:
             result = await client.get("https://api.ipify.org/", proxy=proxy)
             return await result.text()
 
-    async def start(self):
+    async def start(self, interval_ping: int):
         max_retry = 10
         retry = 1
         proxy = self.proxy
@@ -98,7 +98,7 @@ class Grass:
                         await wss.send_json(pong_data)
                         self.log(f"{white}send {magenta}pong {white}to server !")
                         # you can edit the countdown in code below
-                        await countdown(120)
+                        await countdown(interval_ping)
             except KeyboardInterrupt:
                 await self.ses.close()
                 exit()
@@ -138,6 +138,9 @@ async def main():
     )
     token = open("token.txt", "r").read()
     userid = open("userid.txt", "r").read()
+    _config = open("config.json", "r").read()
+    config = json.loads(_config)
+    interval = config.get("interval_ping", 120)
     if len(userid) <= 0:
         print(f"{red}error : {white}please input your userid account first !")
         exit()
@@ -147,13 +150,14 @@ async def main():
     proxies = open(args.proxy, "r").read().splitlines()
     if len(proxies) <= 0:
         proxies = [None]
-    tasks = [Grass(userid, proxy).start() for proxy in proxies]
+    tasks = [Grass(userid, proxy).start(interval_ping=interval) for proxy in proxies]
     await asyncio.gather(*tasks)
 
 
 if __name__ == "__main__":
     try:
         import asyncio
+
         if os.name == "nt":
             asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
         asyncio.run(main())
