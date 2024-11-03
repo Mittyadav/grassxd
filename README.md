@@ -35,10 +35,6 @@ For proxy services, I am currently experimenting with the following sites:
 
 [First Site](https://app.nstproxy.com/register?i=YhCRDQ)
 
-[Second Site](https://dataimpulse.com/?aff=48082)
-
-[Third Site](https://www.webshare.io/?referral_code=dwj0m9cdi4mp)
-
 The format used follows these examples:
 
 Example formats:

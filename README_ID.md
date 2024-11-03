@@ -33,11 +33,6 @@ Untuk proxy sekarang saya sedang melakukan percobaan dengan beberapa situs berik
 
 [Situs pertama](https://app.nstproxy.com/register?i=YhCRDQ), 
 
-[Situs Kedua](https://dataimpulse.com/?aff=48082)
-
-[Situs Ketiga](https://www.webshare.io/?referral_code=dwj0m9cdi4mp)
-
-
 Untuk format yang digunakan mengikuti contoh format berikut
 
 Contoh format
